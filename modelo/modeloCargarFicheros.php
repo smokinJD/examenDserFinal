@@ -27,6 +27,7 @@ class Fichero{
     public function insertarCliente($nombre,$apellido,$telefono) {
         $sql=$this->link->query("CALL spInsertarCliente(?,?,?)");
         $sqlPrep = $this->link->prepare($sql);
+        echo $this->link->error;
     	$sqlPrep->bind_param("sss", $nombre,$apellido,$telefono);
         $sqlPrep->execute();
         $this->link->close();
